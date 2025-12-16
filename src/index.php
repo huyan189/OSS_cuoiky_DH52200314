@@ -6,7 +6,7 @@
     <style>body { font-family: sans-serif; text-align: center; padding-top: 50px; }</style>
 </head>
 <body>
-    <h1>Demo Bài tập Cuối kỳ: Docker + PHP + MySQL</h1>
+    <h1>Đây là phiên bản Feature</h1>
     
     <?php
     $host = 'db'; // Tên service trong docker-compose
