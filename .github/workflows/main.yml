@@ -11,10 +11,11 @@ jobs:
     # Bước 1: Lấy code về
     - uses: actions/checkout@v3
     
-    # Bước 2: Build thử Docker Image (Nếu build được nghĩa là code ngon)
+    # Bước 2: Dùng lệnh chuẩn của Docker để build thử
+    # (Lệnh này luôn có sẵn trên GitHub Actions, không bao giờ lo thiếu)
     - name: Build Docker Image
       run: docker build . --file Dockerfile --tag my-app:latest
 
-    # Bước 3: Kiểm tra xem Image đã được tạo chưa
+    # Bước 3: Kiểm tra kết quả
     - name: Verify Build
       run: docker images
