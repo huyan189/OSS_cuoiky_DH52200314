@@ -8,14 +8,14 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-    # Bước 1: Lấy code về
-    - uses: actions/checkout@v3
-    
-    # Bước 2: Dùng lệnh chuẩn của Docker để build thử
-    # (Lệnh này luôn có sẵn trên GitHub Actions, không bao giờ lo thiếu)
-    - name: Build Docker Image
-      run: docker build . --file Dockerfile --tag my-app:latest
+      # 1. Lấy code về
+      - uses: actions/checkout@v3
 
-    # Bước 3: Kiểm tra kết quả
-    - name: Verify Build
-      run: docker images
+      # 2. Build thử Docker Image
+      # (Dùng lệnh docker thuần túy để tránh lỗi "command not found")
+      - name: Build Docker Image
+        run: docker build . --file Dockerfile --tag my-web-app:latest
+
+      # 3. Kiểm tra xem image đã tạo thành công chưa
+      - name: Verify Build
+        run: docker images
