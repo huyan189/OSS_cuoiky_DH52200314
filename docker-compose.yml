@@ -1,17 +1,16 @@
-version: '3.8'
-
 services:
-  # Service 1: Web Server (PHP + Apache)
+  # Service 1: Web Server
   web:
     build: .
     ports:
-      - "8080:80"  # Chạy localhost:8080 ở máy ngoài
+      - "8080:80"
     depends_on:
       - db
 
   # Service 2: Database (MySQL)
   db:
     image: mysql:5.7
+    platform: linux/amd64      # <--- QUAN TRỌNG: Dòng này giúp chạy MySQL 5.7 trên Mac M1
     environment:
       MYSQL_DATABASE: my_database
       MYSQL_USER: user
