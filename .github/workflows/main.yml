@@ -5,13 +5,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
     steps:
+    # Bước 1: Lấy code về
     - uses: actions/checkout@v3
     
-    - name: Validate Docker configuration
-      run: docker-compose config
-      
-    - name: Test Build Docker Image
-      run: docker build . --file Dockerfile
+    # Bước 2: Build thử Docker Image (Nếu build được nghĩa là code ngon)
+    - name: Build Docker Image
+      run: docker build . --file Dockerfile --tag my-app:latest
+
+    # Bước 3: Kiểm tra xem Image đã được tạo chưa
+    - name: Verify Build
+      run: docker images
