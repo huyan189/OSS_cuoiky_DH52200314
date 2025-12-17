@@ -1,0 +1,21 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Lấy code về
+      - uses: actions/checkout@v3
+
+      # 2. Build thử Docker Image
+      # (Dùng lệnh docker thuần túy để tránh lỗi "command not found")
+      - name: Build Docker Image
+        run: docker build . --file Dockerfile --tag my-web-app:latest
+
+      # 3. Kiểm tra xem image đã tạo thành công chưa
+      - name: Verify Build
+        run: docker images
