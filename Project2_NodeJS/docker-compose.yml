@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  # Service 1: Node Web App
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo-db
+
+  # Service 2: Database MongoDB (Khác với MySQL của bài 1)
+  mongo-db:
+    image: mongo:latest
+    # Dòng này quan trọng cho Mac M1 để tránh lỗi platform
+    platform: linux/amd64 
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
