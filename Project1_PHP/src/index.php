@@ -6,6 +6,7 @@
     <style>body { font-family: sans-serif; text-align: center; padding-top: 50px; }</style>
 </head>
 <body>
+    <h1>Bài Kiểm Tra - DH52200314</h1>
     <h1>Đây là phiên bản Feature</h1>
     
     <?php
